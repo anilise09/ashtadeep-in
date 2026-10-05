@@ -1,129 +1,97 @@
-// Ashtadeep: the scroll story, the panels' art rising into place, the promise gallery, and small header details.
-// Without this file (or with reduced motion) the page is complete and static: the "motion" class that pins the
-// story and hides content until it is revealed is only set here.
+// Ashtadeep: the header settling on white, the menu sheet, the finder, the paged stories and promises, content rising
+// into place, and each promise's lamp lighting. The page is complete without this file; the "motion" class that
+// hides content until it is revealed is only set here.
 (function () {
   var root = document.documentElement;
-  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
-  var motion = !reduce.matches && 'IntersectionObserver' in window;
+  var motion = !window.matchMedia('(prefers-reduced-motion: reduce)').matches && 'IntersectionObserver' in window;
   if (motion) root.classList.add('motion');
 
-  var clamp = function (v, a, b) { return Math.min(b, Math.max(a, v)); };
-  var range = function (p, a, b) { return clamp((p - a) / (b - a), 0, 1); };          // 0 before a, 1 after b
-  var ease = function (t) { return 1 - Math.pow(1 - t, 3); };                          // ease-out cubic
-
-  // Chapter one: scroll position drives the name, the gloss, the lamps and the headline.
-  var story = document.querySelector('.story');
-  var stage = story && story.querySelector('.story-stage');
-  var parts = story && {
-    w1: story.querySelector('.w1'), w2: story.querySelector('.w2'), word: story.querySelector('.word'),
-    glosses: story.querySelectorAll('.g'), latin: story.querySelector('.latin'), lamps: story.querySelector('.lamps'),
-    lampEls: story.querySelectorAll('.lamp'), copy: story.querySelector('.copy'), hint: story.querySelector('.hint')
-  };
-
-  function drawStory() {
-    if (!story) return;
-    if (!motion) { parts.lampEls.forEach(function (l) { l.classList.add('on'); }); return; }
-    var r = story.getBoundingClientRect();
-    var run = story.offsetHeight - stage.offsetHeight;
-    var p = clamp(-r.top / run, 0, 1);
-    var vw = window.innerWidth;
-
-    // 0.00-0.24: the word splits into its two halves; the meanings appear beneath.
-    var split = ease(range(p, 0.04, 0.24));
-    var gap = Math.min(vw * 0.07, 110) * split;
-    // 0.40-0.58: the word rises and shrinks away, gone before the headline arrives.
-    var away = ease(range(p, 0.40, 0.58));
-    parts.w1.style.transform = 'translateX(' + (-gap) + 'px)';
-    parts.w2.style.transform = 'translateX(' + gap + 'px)';
-    parts.word.style.transform = 'translateX(-50%) translateY(' + (-away * 22) + 'vh) scale(' + (1 - away * 0.45) + ')';
-    parts.word.style.opacity = String(1 - range(p, 0.48, 0.58));
-
-    var glossIn = ease(range(p, 0.12, 0.26)), glossOut = range(p, 0.36, 0.44);
-    parts.glosses.forEach(function (g) {
-      g.style.opacity = String(glossIn * (1 - glossOut));
-      g.style.transform = 'translate(-50%, ' + (6 + (1 - glossIn) * 16) + 'px)';
-    });
-    var latinOut = range(p, 0.03, 0.12);
-    parts.latin.style.opacity = String(1 - latinOut);
-    parts.latin.style.transform = 'translateX(-50%) translateY(' + (latinOut * 12) + 'px)';
-
-    // 0.30-0.40: the shelf of lamps rises; 0.36-0.62: they light one by one.
-    var lampsIn = ease(range(p, 0.28, 0.40));
-    parts.lamps.style.opacity = String(lampsIn);
-    parts.lamps.style.transform = 'translateX(-50%) translateY(' + ((1 - lampsIn) * 40) + 'px)';
-    parts.lampEls.forEach(function (l, i) { l.classList.toggle('on', p > 0.36 + i * 0.032); });
-
-    // 0.64-0.80: the headline arrives.
-    var copyIn = ease(range(p, 0.62, 0.78));
-    parts.copy.style.opacity = String(copyIn);
-    parts.copy.style.transform = 'translateX(-50%) translateY(' + ((1 - copyIn) * 36) + 'px)';
-    parts.copy.classList.toggle('live', copyIn > 0.6);
-
-    parts.hint.style.opacity = String(1 - range(p, 0, 0.06));
-    story.classList.toggle('is-paused', r.bottom < 0 || r.top > window.innerHeight);
-  }
-
-  // Chapter two: each panel's art rises and settles as the panel scrolls into view.
-  var arts = document.querySelectorAll('.panel .art img');
-  function drawArt() {
-    if (!motion) return;
-    var h = window.innerHeight;
-    arts.forEach(function (img) {
-      var r = img.parentNode.getBoundingClientRect();
-      if (r.top > h || r.bottom < 0) return;
-      var t = ease(clamp((h - r.top) / (h * 0.9), 0, 1));
-      img.style.transform = 'translateY(' + ((1 - t) * 90) + 'px) scale(' + (1.1 - t * 0.1) + ')';
-    });
-  }
-
+  // Header: transparent over the hero, white once the page moves.
   var header = document.querySelector('.site-header');
   var ticking = false;
-  function frame() {
-    ticking = false;
-    drawStory();
-    drawArt();
-    if (header) header.classList.toggle('is-scrolled', window.scrollY > 4);
-  }
-  function onScroll() { if (!ticking) { ticking = true; requestAnimationFrame(frame); } }
-  window.addEventListener('scroll', onScroll, { passive: true });
-  window.addEventListener('resize', onScroll);
-  frame();
+  function mark() { ticking = false; if (header) header.classList.toggle('is-scrolled', window.scrollY > 24); }
+  window.addEventListener('scroll', function () { if (!ticking) { ticking = true; requestAnimationFrame(mark); } }, { passive: true });
+  mark();
 
-  // Reveals and the promise lamps.
+  // Menu sheet: closes on its button, on Escape, and after choosing a link.
+  var menu = document.querySelector('.menu');
+  if (menu) {
+    var close = function () { menu.open = false; };
+    menu.querySelectorAll('.close, .menu-sheet a').forEach(function (el) { el.addEventListener('click', close); });
+    document.addEventListener('keydown', function (ev) { if (ev.key === 'Escape' && menu.open) { close(); menu.querySelector('summary').focus(); } });
+  }
+
+  // Finder: matches what is typed against the site's own index; Enter goes to the first match.
+  var input = document.getElementById('find');
+  var data = document.getElementById('find-index');
+  if (input && data) {
+    var index = JSON.parse(data.textContent);
+    var list = input.form.querySelector('.results');
+    var norm = function (s) { return s.toLowerCase().normalize('NFKD').replace(/[̀-ͯ]/g, ''); };
+    var render = function () {
+      var q = norm(input.value.trim());
+      list.innerHTML = '';
+      var old = input.form.querySelector('.none'); if (old) old.remove();
+      if (!q) return;
+      var words = q.split(/\s+/);
+      var hits = index.filter(function (it) {
+        var hay = norm(it.t + ' ' + it.d + ' ' + it.k);
+        return words.every(function (w) { return hay.indexOf(w) >= 0; });
+      }).slice(0, 5);
+      if (!hits.length) {
+        var none = document.createElement('p');
+        none.className = 'none';
+        none.textContent = 'Nothing here matches that yet. Try QuellWard, Vawra or privacy.';
+        list.after(none);
+        return;
+      }
+      hits.forEach(function (it) {
+        var li = document.createElement('li'), a = document.createElement('a'), b = document.createElement('b'), s = document.createElement('span');
+        a.href = it.h; b.textContent = it.t; s.textContent = it.d;
+        a.append(b, s); li.append(a); list.append(li);
+        a.addEventListener('click', function () { input.value = ''; render(); });
+      });
+    };
+    input.addEventListener('input', render);
+    input.addEventListener('keydown', function (ev) {
+      if (ev.key === 'Enter') { var first = list.querySelector('a'); if (first) { ev.preventDefault(); first.click(); location.hash = first.getAttribute('href'); } }
+    });
+  }
+
+  // Pagers for the stories and the promises: count where you are, step a card at a time.
+  document.querySelectorAll('.pager').forEach(function (pager) {
+    var track = document.getElementById(pager.getAttribute('data-for'));
+    if (!track) return;
+    var items = track.querySelectorAll('li');
+    var prev = pager.querySelector('.prev'), next = pager.querySelector('.next'), at = pager.querySelector('.at');
+    var step = function () { var first = items[0]; return first ? first.getBoundingClientRect().width + 20 : track.clientWidth; };
+    var sync = function () {
+      var i = Math.round(track.scrollLeft / step());
+      at.textContent = String(Math.min(items.length, i + 1));
+      prev.disabled = track.scrollLeft < 8;
+      next.disabled = track.scrollLeft + track.clientWidth > track.scrollWidth - 8;
+    };
+    prev.addEventListener('click', function () { track.scrollBy({ left: -step(), behavior: motion ? 'smooth' : 'auto' }); });
+    next.addEventListener('click', function () { track.scrollBy({ left: step(), behavior: motion ? 'smooth' : 'auto' }); });
+    track.addEventListener('scroll', sync, { passive: true });
+    window.addEventListener('resize', sync);
+    sync();
+  });
+
+  // Content rises into place once; each promise's lamp lights when its card is in view, and stays lit.
   var reveal = document.querySelectorAll('.reveal');
-  var cards = document.querySelectorAll('.card');
+  var lamps = document.querySelectorAll('.promise');
   if ('IntersectionObserver' in window) {
     var io = new IntersectionObserver(function (es) {
       es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
-    }, { rootMargin: '0px 0px -10% 0px' });
+    }, { rootMargin: '0px 0px -8% 0px' });
     reveal.forEach(function (el) { io.observe(el); });
     var lit = new IntersectionObserver(function (es) {
-      es.forEach(function (e) { e.target.classList.toggle('on', e.isIntersecting || e.target.classList.contains('kept')); if (e.isIntersecting) e.target.classList.add('kept'); });
-    }, { threshold: 0.6 });
-    cards.forEach(function (c) { lit.observe(c); });
+      es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('on'); lit.unobserve(e.target); } });
+    }, { threshold: 0.55 });
+    lamps.forEach(function (l) { lit.observe(l); });
   } else {
     reveal.forEach(function (el) { el.classList.add('in'); });
-    cards.forEach(function (c) { c.classList.add('on'); });
+    lamps.forEach(function (l) { l.classList.add('on'); });
   }
-
-  // Chapter three: previous / next for the promise gallery.
-  var gallery = document.querySelector('.gallery');
-  if (gallery) {
-    var prev = document.querySelector('.gallery-nav .prev'), next = document.querySelector('.gallery-nav .next');
-    var step = function () { var c = gallery.querySelector('.card'); return c ? c.getBoundingClientRect().width + 20 : 300; };
-    var sync = function () {
-      prev.disabled = gallery.scrollLeft < 8;
-      next.disabled = gallery.scrollLeft + gallery.clientWidth > gallery.scrollWidth - 8;
-    };
-    prev.addEventListener('click', function () { gallery.scrollBy({ left: -step(), behavior: motion ? 'smooth' : 'auto' }); });
-    next.addEventListener('click', function () { gallery.scrollBy({ left: step(), behavior: motion ? 'smooth' : 'auto' }); });
-    gallery.addEventListener('scroll', sync, { passive: true });
-    window.addEventListener('resize', sync);
-    sync();
-  }
-
-  // Close the phone menu after choosing a link.
-  document.querySelectorAll('.menu-panel a').forEach(function (a) {
-    a.addEventListener('click', function () { var d = a.closest('details'); if (d) d.open = false; });
-  });
 })();

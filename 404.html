@@ -22,19 +22,40 @@
 <meta property="og:image" content="https://ashtadeep.in/share.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Ashtadeep: eight lamps lit on a shelf">
+<meta property="og:image:alt" content="Ashtadeep: software that gives light, not noise">
 <meta property="og:locale" content="en_IN">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="preload" href="/fonts/satoshi-700.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/satoshi-400.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/fonts/satoshi-500.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/styles.css?v=a6dad5da6e">
+<link rel="preload" href="/img/art-hero.webp" as="image">
+<link rel="stylesheet" href="/styles.css?v=e8c2ec6b34">
 <script>document.documentElement.classList.add('js')</script>
-<script src="/site.js?v=545edcfd43" defer></script>
+<script src="/site.js?v=1c5b9e3177" defer></script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
 <header class="site-header">
   <div class="bar">
+    <details class="menu">
+      <summary class="round" aria-label="Open the menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 8h16M4 16h16"/></svg></summary>
+      <div class="menu-sheet" role="dialog" aria-label="Menu">
+        <div class="top"><button type="button" class="round close" aria-label="Close the menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button><a class="brand" href="/"><svg viewBox="0 0 64 64" aria-hidden="true" focusable="false"><g class="bowl">
+    <path fill="#C9952F" d="M4.5 38.6c9.4 3.3 30.6 3.6 56.8-4.1-2.6 11.3-13.1 18-27.6 18.3C18.2 53 8.7 47.6 4.5 38.6Z"/>
+    <path fill="#8A6418" d="M10.2 40.2c13.5 2.6 27.5 2.2 44.6-2.6-6.6 4-17.6 6.3-28.3 6.1-6.7-.1-12.4-1.3-16.3-3.5Z"/>
+    <path fill="#E2B85A" d="M9 44.4c6.5 4.8 16.3 6.6 25.8 5.6-8.6 2.4-19.6.6-25.8-5.6Z" opacity=".7"/>
+    <path fill="#8A6418" d="M25.5 52.4c4.3 1.1 9 1.1 13.2-.2l-1 4.3c-3.6 1.1-7.6 1.1-11.2 0Z"/>
+  </g>
+  <g class="flame">
+    <path fill="#F6A623" d="M51 7.5c4.6 7.6 8.6 13.8 7.4 20.3-.8 4.4-4.2 7.4-7.6 7.4s-6.8-3-7.4-7.3C42.5 21.5 46.6 15 51 7.5Z"/>
+    <path fill="#FFE3A3" d="M51.1 18.6c2.3 4 4 7.2 3.3 10.4-.4 2-1.9 3.4-3.4 3.4s-3-1.4-3.4-3.4c-.6-3.2 1.2-6.4 3.5-10.4Z"/>
+  </g></svg>Ashtadeep<span class="deva" lang="hi">अष्टदीप</span></a></div>
+        <div class="grid">
+          <nav aria-label="Apps"><h2>Apps</h2><ul><li><a href="/#quellward">QuellWard</a></li><li><a href="/#vawra">Vawra</a></li><li><a href="/#apps">Everything we make</a></li></ul></nav>
+          <nav aria-label="Ashtadeep"><h2>Ashtadeep</h2><ul><li><a href="/#stories">Top stories</a></li><li><a href="/#work">What we work on</a></li><li><a href="/#promises">Eight promises</a></li><li><a href="/#name">Our name</a></li></ul></nav>
+          <nav aria-label="Region"><h2>Region</h2><ul><li><a href="https://ashtadeep.com/" hreflang="en">Global: ashtadeep.com</a></li></ul></nav>
+        </div>
+      </div>
+    </details>
     <a class="brand" href="/" aria-label="Ashtadeep, home"><svg viewBox="0 0 64 64" aria-hidden="true" focusable="false"><g class="bowl">
     <path fill="#C9952F" d="M4.5 38.6c9.4 3.3 30.6 3.6 56.8-4.1-2.6 11.3-13.1 18-27.6 18.3C18.2 53 8.7 47.6 4.5 38.6Z"/>
     <path fill="#8A6418" d="M10.2 40.2c13.5 2.6 27.5 2.2 44.6-2.6-6.6 4-17.6 6.3-28.3 6.1-6.7-.1-12.4-1.3-16.3-3.5Z"/>
@@ -45,11 +66,8 @@
     <path fill="#F6A623" d="M51 7.5c4.6 7.6 8.6 13.8 7.4 20.3-.8 4.4-4.2 7.4-7.6 7.4s-6.8-3-7.4-7.3C42.5 21.5 46.6 15 51 7.5Z"/>
     <path fill="#FFE3A3" d="M51.1 18.6c2.3 4 4 7.2 3.3 10.4-.4 2-1.9 3.4-3.4 3.4s-3-1.4-3.4-3.4c-.6-3.2 1.2-6.4 3.5-10.4Z"/>
   </g></svg>Ashtadeep<span class="deva" lang="hi">अष्टदीप</span></a>
-    <nav class="nav" aria-label="Main"><a href="/#apps">Apps</a><a href="/#promises">Promises</a><a href="/#name">Our name</a><a class="region" href="https://ashtadeep.com/" hreflang="en" title="Ashtadeep worldwide: ashtadeep.com">Global</a></nav>
-    <details class="menu">
-      <summary aria-label="Menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M4 9h16M4 15h16"/></svg></summary>
-      <div class="menu-panel"><a href="/#apps">Apps</a><a href="/#promises">Promises</a><a href="/#name">Our name</a><a href="https://ashtadeep.com/" title="Ashtadeep worldwide: ashtadeep.com">Global: ashtadeep.com</a></div>
-    </details>
+    <nav class="pills" aria-label="Main"><a href="/#apps">Apps</a><a href="/#stories">Stories</a><a href="/#promises">Promises</a><a href="/#name">Our name</a></nav>
+    <a class="region" href="https://ashtadeep.com/" hreflang="en" title="Ashtadeep worldwide: ashtadeep.com"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.8 5.6 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.6-3.8-9S9.5 5.6 12 3Z"/></svg><span>Global</span></a>
   </div>
 </header>
 <main id="main" class="lost">
@@ -64,21 +82,32 @@
     <path fill="#F6A623" d="M51 7.5c4.6 7.6 8.6 13.8 7.4 20.3-.8 4.4-4.2 7.4-7.6 7.4s-6.8-3-7.4-7.3C42.5 21.5 46.6 15 51 7.5Z"/>
     <path fill="#FFE3A3" d="M51.1 18.6c2.3 4 4 7.2 3.3 10.4-.4 2-1.9 3.4-3.4 3.4s-3-1.4-3.4-3.4c-.6-3.2 1.2-6.4 3.5-10.4Z"/>
   </g></svg>
-    <h1 class="title">This lamp isn’t lit.</h1>
-    <p class="subhead">The page you were looking for doesn’t exist.</p>
-    <div class="actions"><a class="pill" href="/">Back to Ashtadeep</a></div>
+    <h1>This lamp isn’t lit.</h1>
+    <p>The page you were looking for doesn’t exist.</p>
+    <a class="region" href="/">Back to Ashtadeep</a>
   </div>
 </main>
 <footer class="site-footer">
   <div class="wrap">
     <div class="foot-cols">
-      <nav aria-label="Apps"><h2>Apps</h2><ul><li><a href="/#quellward">QuellWard</a></li><li><a href="/#vawra">Vawra</a></li></ul></nav>
-      <nav aria-label="Ashtadeep"><h2>Ashtadeep</h2><ul><li><a href="/#promises">Eight promises</a></li><li><a href="/#name">Our name</a></li></ul></nav>
-      <nav aria-label="Region"><h2>Region</h2><ul><li><a href="https://ashtadeep.com/" title="Ashtadeep worldwide: ashtadeep.com">Global: ashtadeep.com</a></li></ul></nav>
+      <nav aria-label="Apps"><h2>Apps</h2><ul><li><a href="/#quellward">QuellWard</a></li><li><a href="/#vawra">Vawra</a></li><li><a href="/#apps">Everything we make</a></li></ul></nav>
+      <nav aria-label="Ashtadeep"><h2>Ashtadeep</h2><ul><li><a href="/#stories">Top stories</a></li><li><a href="/#work">What we work on</a></li><li><a href="/#promises">Eight promises</a></li><li><a href="/#name">Our name</a></li></ul></nav>
+      <nav aria-label="Region"><h2>Region</h2><ul><li><a href="https://ashtadeep.com/" hreflang="en">Global: ashtadeep.com</a></li></ul></nav>
+      <div><h2>This site</h2><p>It sets no cookies, runs no analytics and loads nothing from other companies. It is hosted on GitHub Pages.</p></div>
     </div>
-    <div class="foot-legal">
-      <p>© 2026 Ashtadeep. This site sets no cookies, runs no analytics and loads nothing from other companies. It is hosted on GitHub Pages.</p>
-      <p>ashtadeep.in</p>
+    <div class="foot-bottom">
+      <a class="brand" href="/"><svg viewBox="0 0 64 64" aria-hidden="true" focusable="false"><g class="bowl">
+    <path fill="#C9952F" d="M4.5 38.6c9.4 3.3 30.6 3.6 56.8-4.1-2.6 11.3-13.1 18-27.6 18.3C18.2 53 8.7 47.6 4.5 38.6Z"/>
+    <path fill="#8A6418" d="M10.2 40.2c13.5 2.6 27.5 2.2 44.6-2.6-6.6 4-17.6 6.3-28.3 6.1-6.7-.1-12.4-1.3-16.3-3.5Z"/>
+    <path fill="#E2B85A" d="M9 44.4c6.5 4.8 16.3 6.6 25.8 5.6-8.6 2.4-19.6.6-25.8-5.6Z" opacity=".7"/>
+    <path fill="#8A6418" d="M25.5 52.4c4.3 1.1 9 1.1 13.2-.2l-1 4.3c-3.6 1.1-7.6 1.1-11.2 0Z"/>
+  </g>
+  <g class="flame">
+    <path fill="#F6A623" d="M51 7.5c4.6 7.6 8.6 13.8 7.4 20.3-.8 4.4-4.2 7.4-7.6 7.4s-6.8-3-7.4-7.3C42.5 21.5 46.6 15 51 7.5Z"/>
+    <path fill="#FFE3A3" d="M51.1 18.6c2.3 4 4 7.2 3.3 10.4-.4 2-1.9 3.4-3.4 3.4s-3-1.4-3.4-3.4c-.6-3.2 1.2-6.4 3.5-10.4Z"/>
+  </g></svg>Ashtadeep</a>
+      <a class="where" href="https://ashtadeep.com/" hreflang="en"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.8 5.6 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.6-3.8-9S9.5 5.6 12 3Z"/></svg>You are on ashtadeep.in</a>
+      <span>© 2026 Ashtadeep</span>
     </div>
   </div>
 </footer>
