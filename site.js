@@ -1,45 +1,47 @@
-// Ashtadeep: lights the eight lamps once, links each principle to its lamp, and marks the header once scrolled.
-// Everything works without this file: lamps show lit, the menu is a <details>.
+// Ashtadeep: lights the eight lamps once, reveals panels as they scroll in, lights each promise's lamp when it is
+// read, and marks the header once the page has scrolled. Everything is readable without this file: the "js" class
+// that hides content until it is revealed is only set when scripts run.
 (function () {
-  var hero = document.querySelector('.hero');
   var lamps = document.querySelector('.hero .lamps');
-  if (hero && lamps) {
-    var light = function () {
-      requestAnimationFrame(function () { lamps.classList.add('is-lit'); hero.classList.add('is-lit'); });
-    };
+  if (lamps) {
+    var light = function () { requestAnimationFrame(function () { lamps.classList.add('is-lit'); }); };
     if (document.fonts && document.fonts.ready) document.fonts.ready.then(light); else light();
     setTimeout(light, 1200); // never leave them dark if fonts stall
-    // Promise six: no flicker work while the lamps are off screen.
-    if ('IntersectionObserver' in window) {
-      new IntersectionObserver(function (es) { lamps.classList.toggle('is-paused', !es[0].isIntersecting); }).observe(lamps);
-    }
   }
 
-  var row = document.querySelectorAll('.principle-lamps .lamp-mini');
-  document.querySelectorAll('.principle').forEach(function (item, i) {
-    var on = function () { row[i] && row[i].classList.add('on'); };
-    var off = function () { row[i] && !row[i].classList.contains('kept') && row[i].classList.remove('on'); };
-    item.addEventListener('pointerenter', on);
-    item.addEventListener('pointerleave', off);
-  });
-  // As principles scroll through the middle of the screen, their lamps light and stay lit.
-  if ('IntersectionObserver' in window && row.length) {
+  var reveal = function (el) { el.classList.add('in'); };
+  var items = document.querySelectorAll('.reveal');
+  var promises = document.querySelectorAll('.promise');
+  if ('IntersectionObserver' in window) {
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (e) {
-        if (e.isIntersecting) {
-          var i = Array.prototype.indexOf.call(document.querySelectorAll('.principle'), e.target);
-          row[i] && row[i].classList.add('on', 'kept');
-          io.unobserve(e.target);
-        }
+        if (!e.isIntersecting) return;
+        reveal(e.target);
+        io.unobserve(e.target);
       });
-    }, { rootMargin: '-35% 0px -45% 0px' });
-    document.querySelectorAll('.principle').forEach(function (p) { io.observe(p); });
+    }, { rootMargin: '0px 0px -12% 0px' });
+    items.forEach(function (el) { io.observe(el); });
+
+    // Promise lamps light as each promise reaches the middle of the screen, and stay lit.
+    var lit = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        e.target.classList.add('on');
+        lit.unobserve(e.target);
+      });
+    }, { rootMargin: '-30% 0px -40% 0px' });
+    promises.forEach(function (p) { lit.observe(p); });
+
+    // Promise six: no flicker work while the hero lamps are off screen.
+    if (lamps) new IntersectionObserver(function (es) { lamps.classList.toggle('is-paused', !es[0].isIntersecting); }).observe(lamps);
   } else {
-    row.forEach(function (l) { l.classList.add('on', 'kept'); });
+    items.forEach(reveal);
+    promises.forEach(function (p) { p.classList.add('on'); });
   }
+
   var header = document.querySelector('.site-header');
   if (header) {
-    var mark = function () { header.classList.toggle('is-scrolled', window.scrollY > 8); };
+    var mark = function () { header.classList.toggle('is-scrolled', window.scrollY > 4); };
     window.addEventListener('scroll', mark, { passive: true });
     mark();
   }
