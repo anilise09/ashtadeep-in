@@ -27,9 +27,9 @@
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preload" href="/fonts/satoshi-700.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/fonts/satoshi-500.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/styles.css?v=1b3b395c16">
+<link rel="stylesheet" href="/styles.css?v=a6dad5da6e">
 <script>document.documentElement.classList.add('js')</script>
-<script src="/site.js?v=c72e03a3dd" defer></script>
+<script src="/site.js?v=545edcfd43" defer></script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -53,14 +53,11 @@
   </div>
 </header>
 <main id="main">
-  <section class="hero" aria-labelledby="hero-title">
-    <div class="wrap">
-      <h1 class="headline" id="hero-title">Software that gives <span class="glow">light</span>, not noise.</h1>
-      <p class="subhead">An independent studio making privacy-first apps for everyday life. We only say what we have tested.</p>
-      <div class="actions"><a class="pill" href="#apps">See our apps</a><a class="more" href="#promises">Our eight promises</a></div>
-      <p class="deva-line"><span class="deva" lang="hi">अष्टदीप</span> · <span class="deva" lang="hi">आठ दीप</span> · eight lamps</p>
-    </div>
-    <div class="lamps" role="img" aria-label="Eight lamps on a shelf, lighting one after another"><span class="shelf"></span><span class="lamp" style="--i:0;--x:6.25;--d:1.70s"><svg viewBox="0 0 64 64" aria-hidden="true" focusable="false"><g class="bowl">
+  <section class="story" aria-labelledby="hero-title">
+    <div class="story-stage">
+      <p class="word" lang="hi"><span class="w1">अष्ट<span class="g" lang="en"><b>ashta</b>eight</span></span><span class="w2">दीप<span class="g" lang="en"><b>deep</b>lamp</span></span></p>
+      <p class="latin">Ashtadeep</p>
+      <div class="lamps" role="img" aria-label="Eight lamps on a shelf"><span class="shelf"></span><span class="lamp" style="--i:0;--x:6.25;--d:1.70s"><svg viewBox="0 0 64 64" aria-hidden="true" focusable="false"><g class="bowl">
     <path fill="#C9952F" d="M4.5 38.6c9.4 3.3 30.6 3.6 56.8-4.1-2.6 11.3-13.1 18-27.6 18.3C18.2 53 8.7 47.6 4.5 38.6Z"/>
     <path fill="#8A6418" d="M10.2 40.2c13.5 2.6 27.5 2.2 44.6-2.6-6.6 4-17.6 6.3-28.3 6.1-6.7-.1-12.4-1.3-16.3-3.5Z"/>
     <path fill="#E2B85A" d="M9 44.4c6.5 4.8 16.3 6.6 25.8 5.6-8.6 2.4-19.6.6-25.8-5.6Z" opacity=".7"/>
@@ -133,10 +130,21 @@
     <path fill="#F6A623" d="M51 7.5c4.6 7.6 8.6 13.8 7.4 20.3-.8 4.4-4.2 7.4-7.6 7.4s-6.8-3-7.4-7.3C42.5 21.5 46.6 15 51 7.5Z"/>
     <path fill="#FFE3A3" d="M51.1 18.6c2.3 4 4 7.2 3.3 10.4-.4 2-1.9 3.4-3.4 3.4s-3-1.4-3.4-3.4c-.6-3.2 1.2-6.4 3.5-10.4Z"/>
   </g></svg></span></div>
+      <div class="copy">
+        <h1 class="headline" id="hero-title">Software that gives <span class="glow">light</span>, not noise.</h1>
+        <p class="subhead">An independent studio making privacy-first apps for everyday life. We only say what we have tested.</p>
+        <div class="actions"><a class="pill" href="#apps">See our apps</a><a class="more" href="#promises">Our eight promises</a></div>
+      </div>
+      <p class="hint" aria-hidden="true">Scroll</p>
+    </div>
   </section>
 
-  <section class="panels" id="apps" aria-label="Our apps">
-    <h2 class="visually-hidden">Our apps</h2>
+  <section id="apps" aria-labelledby="apps-title">
+    <div class="apps-intro wrap reveal">
+      <h2 class="section-title" id="apps-title">Our apps.</h2>
+      <p class="lead">A growing family. Each one is released only when it is ready.</p>
+    </div>
+    <div class="panels">
     <article class="panel fit-cover reveal" id="quellward" style="--bg:linear-gradient(180deg, #A6DCFD 0%, #8FD0FA 100%);--fg:#0A2342;--accent:#0A3D73;--muted:#1F4670" aria-labelledby="quellward-name">
       <p class="kind">Ad and tracker blocker</p>
       <h3 class="title" id="quellward-name">QuellWard</h3>
@@ -179,8 +187,7 @@
       
       <div class="art"><img src="img/vawra.webp" alt="The Vawra mark: two faces meeting inside a heart" width="720" height="720" loading="lazy" decoding="async"></div>
     </article>
-    <div class="panel-grid">
-      <article class="panel half more-panel reveal" aria-labelledby="more-title">
+      <article class="panel soon-panel reveal" aria-labelledby="more-title">
         <h3 class="title" id="more-title">More on the way.</h3>
         <p class="copy">New apps join this page when they are ready. Each one keeps the same eight promises.</p>
         <div class="row" aria-hidden="true"><svg viewBox="0 0 64 64" aria-hidden="true" focusable="false"><g class="bowl">
@@ -212,25 +219,15 @@
     <path fill="#FFE3A3" d="M51.1 18.6c2.3 4 4 7.2 3.3 10.4-.4 2-1.9 3.4-3.4 3.4s-3-1.4-3.4-3.4c-.6-3.2 1.2-6.4 3.5-10.4Z"/>
   </g></svg></div>
       </article>
-      <article class="panel half name-panel reveal" id="name" aria-labelledby="name-title">
-        <p class="name-word" lang="hi">अष्टदीप</p>
-        <p class="name-split">ashta, eight · deep, lamp</p>
-        <h3 class="visually-hidden" id="name-title">Our name</h3>
-        <p class="copy">A diya does one quiet job. It gives light and asks for nothing back. We named the studio after eight of them, one for each promise we keep.</p>
-        <blockquote>
-          <p lang="sa">तमसो मा ज्योतिर्गमय</p>
-          <footer>“Lead me from darkness to light.” Brihadaranyaka Upanishad 1.3.28</footer>
-        </blockquote>
-      </article>
     </div>
   </section>
 
   <section class="promises" id="promises" aria-labelledby="promises-title">
-    <div class="wrap reveal">
-      <h2 class="section-title" id="promises-title">Eight lamps. Eight promises.</h2>
+    <div class="head reveal">
+      <h2 class="section-title" id="promises-title">Eight lamps.<br>Eight promises.</h2>
       <p class="lead">Every app we make keeps all eight.</p>
     </div>
-    <ol class="promise-list"><li class="promise"><span class="lamp-mini"><svg viewBox="0 0 64 64" aria-hidden="true" focusable="false"><g class="bowl">
+    <div class="gallery" tabindex="0" aria-label="The eight promises. Scroll sideways for more."><ul class="cards"><li class="card" style="--d:2.21s"><span class="lamp-mini"><svg viewBox="0 0 64 64" aria-hidden="true" focusable="false"><g class="bowl">
     <path fill="#C9952F" d="M4.5 38.6c9.4 3.3 30.6 3.6 56.8-4.1-2.6 11.3-13.1 18-27.6 18.3C18.2 53 8.7 47.6 4.5 38.6Z"/>
     <path fill="#8A6418" d="M10.2 40.2c13.5 2.6 27.5 2.2 44.6-2.6-6.6 4-17.6 6.3-28.3 6.1-6.7-.1-12.4-1.3-16.3-3.5Z"/>
     <path fill="#E2B85A" d="M9 44.4c6.5 4.8 16.3 6.6 25.8 5.6-8.6 2.4-19.6.6-25.8-5.6Z" opacity=".7"/>
@@ -239,7 +236,7 @@
   <g class="flame">
     <path fill="#F6A623" d="M51 7.5c4.6 7.6 8.6 13.8 7.4 20.3-.8 4.4-4.2 7.4-7.6 7.4s-6.8-3-7.4-7.3C42.5 21.5 46.6 15 51 7.5Z"/>
     <path fill="#FFE3A3" d="M51.1 18.6c2.3 4 4 7.2 3.3 10.4-.4 2-1.9 3.4-3.4 3.4s-3-1.4-3.4-3.4c-.6-3.2 1.2-6.4 3.5-10.4Z"/>
-  </g></svg></span><span class="num deva" aria-hidden="true">१</span><h3>Yours stays yours</h3><p>Our apps make their decisions on your device wherever they can, so what you do stays with you.</p></li><li class="promise"><span class="lamp-mini"><svg viewBox="0 0 64 64" aria-hidden="true" focusable="false"><g class="bowl">
+  </g></svg></span><span class="num deva">१</span><h3>Yours stays yours</h3><p>Our apps make their decisions on your device wherever they can, so what you do stays with you.</p></li><li class="card" style="--d:2.62s"><span class="lamp-mini"><svg viewBox="0 0 64 64" aria-hidden="true" focusable="false"><g class="bowl">
     <path fill="#C9952F" d="M4.5 38.6c9.4 3.3 30.6 3.6 56.8-4.1-2.6 11.3-13.1 18-27.6 18.3C18.2 53 8.7 47.6 4.5 38.6Z"/>
     <path fill="#8A6418" d="M10.2 40.2c13.5 2.6 27.5 2.2 44.6-2.6-6.6 4-17.6 6.3-28.3 6.1-6.7-.1-12.4-1.3-16.3-3.5Z"/>
     <path fill="#E2B85A" d="M9 44.4c6.5 4.8 16.3 6.6 25.8 5.6-8.6 2.4-19.6.6-25.8-5.6Z" opacity=".7"/>
@@ -248,7 +245,7 @@
   <g class="flame">
     <path fill="#F6A623" d="M51 7.5c4.6 7.6 8.6 13.8 7.4 20.3-.8 4.4-4.2 7.4-7.6 7.4s-6.8-3-7.4-7.3C42.5 21.5 46.6 15 51 7.5Z"/>
     <path fill="#FFE3A3" d="M51.1 18.6c2.3 4 4 7.2 3.3 10.4-.4 2-1.9 3.4-3.4 3.4s-3-1.4-3.4-3.4c-.6-3.2 1.2-6.4 3.5-10.4Z"/>
-  </g></svg></span><span class="num deva" aria-hidden="true">२</span><h3>Only true claims</h3><p>We say what we have tested, and nothing more.</p></li><li class="promise"><span class="lamp-mini"><svg viewBox="0 0 64 64" aria-hidden="true" focusable="false"><g class="bowl">
+  </g></svg></span><span class="num deva">२</span><h3>Only true claims</h3><p>We say what we have tested, and nothing more.</p></li><li class="card" style="--d:1.83s"><span class="lamp-mini"><svg viewBox="0 0 64 64" aria-hidden="true" focusable="false"><g class="bowl">
     <path fill="#C9952F" d="M4.5 38.6c9.4 3.3 30.6 3.6 56.8-4.1-2.6 11.3-13.1 18-27.6 18.3C18.2 53 8.7 47.6 4.5 38.6Z"/>
     <path fill="#8A6418" d="M10.2 40.2c13.5 2.6 27.5 2.2 44.6-2.6-6.6 4-17.6 6.3-28.3 6.1-6.7-.1-12.4-1.3-16.3-3.5Z"/>
     <path fill="#E2B85A" d="M9 44.4c6.5 4.8 16.3 6.6 25.8 5.6-8.6 2.4-19.6.6-25.8-5.6Z" opacity=".7"/>
@@ -257,7 +254,7 @@
   <g class="flame">
     <path fill="#F6A623" d="M51 7.5c4.6 7.6 8.6 13.8 7.4 20.3-.8 4.4-4.2 7.4-7.6 7.4s-6.8-3-7.4-7.3C42.5 21.5 46.6 15 51 7.5Z"/>
     <path fill="#FFE3A3" d="M51.1 18.6c2.3 4 4 7.2 3.3 10.4-.4 2-1.9 3.4-3.4 3.4s-3-1.4-3.4-3.4c-.6-3.2 1.2-6.4 3.5-10.4Z"/>
-  </g></svg></span><span class="num deva" aria-hidden="true">३</span><h3>No dark patterns</h3><p>No tricks to keep you scrolling and no traps to keep you paying.</p></li><li class="promise"><span class="lamp-mini"><svg viewBox="0 0 64 64" aria-hidden="true" focusable="false"><g class="bowl">
+  </g></svg></span><span class="num deva">३</span><h3>No dark patterns</h3><p>No tricks to keep you scrolling and no traps to keep you paying.</p></li><li class="card" style="--d:2.24s"><span class="lamp-mini"><svg viewBox="0 0 64 64" aria-hidden="true" focusable="false"><g class="bowl">
     <path fill="#C9952F" d="M4.5 38.6c9.4 3.3 30.6 3.6 56.8-4.1-2.6 11.3-13.1 18-27.6 18.3C18.2 53 8.7 47.6 4.5 38.6Z"/>
     <path fill="#8A6418" d="M10.2 40.2c13.5 2.6 27.5 2.2 44.6-2.6-6.6 4-17.6 6.3-28.3 6.1-6.7-.1-12.4-1.3-16.3-3.5Z"/>
     <path fill="#E2B85A" d="M9 44.4c6.5 4.8 16.3 6.6 25.8 5.6-8.6 2.4-19.6.6-25.8-5.6Z" opacity=".7"/>
@@ -266,7 +263,7 @@
   <g class="flame">
     <path fill="#F6A623" d="M51 7.5c4.6 7.6 8.6 13.8 7.4 20.3-.8 4.4-4.2 7.4-7.6 7.4s-6.8-3-7.4-7.3C42.5 21.5 46.6 15 51 7.5Z"/>
     <path fill="#FFE3A3" d="M51.1 18.6c2.3 4 4 7.2 3.3 10.4-.4 2-1.9 3.4-3.4 3.4s-3-1.4-3.4-3.4c-.6-3.2 1.2-6.4 3.5-10.4Z"/>
-  </g></svg></span><span class="num deva" aria-hidden="true">४</span><h3>Security first</h3><p>An app ships only after it passes its security checks.</p></li><li class="promise"><span class="lamp-mini"><svg viewBox="0 0 64 64" aria-hidden="true" focusable="false"><g class="bowl">
+  </g></svg></span><span class="num deva">४</span><h3>Security first</h3><p>An app ships only after it passes its security checks.</p></li><li class="card" style="--d:2.65s"><span class="lamp-mini"><svg viewBox="0 0 64 64" aria-hidden="true" focusable="false"><g class="bowl">
     <path fill="#C9952F" d="M4.5 38.6c9.4 3.3 30.6 3.6 56.8-4.1-2.6 11.3-13.1 18-27.6 18.3C18.2 53 8.7 47.6 4.5 38.6Z"/>
     <path fill="#8A6418" d="M10.2 40.2c13.5 2.6 27.5 2.2 44.6-2.6-6.6 4-17.6 6.3-28.3 6.1-6.7-.1-12.4-1.3-16.3-3.5Z"/>
     <path fill="#E2B85A" d="M9 44.4c6.5 4.8 16.3 6.6 25.8 5.6-8.6 2.4-19.6.6-25.8-5.6Z" opacity=".7"/>
@@ -275,7 +272,7 @@
   <g class="flame">
     <path fill="#F6A623" d="M51 7.5c4.6 7.6 8.6 13.8 7.4 20.3-.8 4.4-4.2 7.4-7.6 7.4s-6.8-3-7.4-7.3C42.5 21.5 46.6 15 51 7.5Z"/>
     <path fill="#FFE3A3" d="M51.1 18.6c2.3 4 4 7.2 3.3 10.4-.4 2-1.9 3.4-3.4 3.4s-3-1.4-3.4-3.4c-.6-3.2 1.2-6.4 3.5-10.4Z"/>
-  </g></svg></span><span class="num deva" aria-hidden="true">५</span><h3>Everywhere you are</h3><p>Phones, tablets, computers and browsers, released one at a time as each one is tested.</p></li><li class="promise"><span class="lamp-mini"><svg viewBox="0 0 64 64" aria-hidden="true" focusable="false"><g class="bowl">
+  </g></svg></span><span class="num deva">५</span><h3>Everywhere you are</h3><p>Phones, tablets, computers and browsers, released one at a time as each one is tested.</p></li><li class="card" style="--d:1.86s"><span class="lamp-mini"><svg viewBox="0 0 64 64" aria-hidden="true" focusable="false"><g class="bowl">
     <path fill="#C9952F" d="M4.5 38.6c9.4 3.3 30.6 3.6 56.8-4.1-2.6 11.3-13.1 18-27.6 18.3C18.2 53 8.7 47.6 4.5 38.6Z"/>
     <path fill="#8A6418" d="M10.2 40.2c13.5 2.6 27.5 2.2 44.6-2.6-6.6 4-17.6 6.3-28.3 6.1-6.7-.1-12.4-1.3-16.3-3.5Z"/>
     <path fill="#E2B85A" d="M9 44.4c6.5 4.8 16.3 6.6 25.8 5.6-8.6 2.4-19.6.6-25.8-5.6Z" opacity=".7"/>
@@ -284,7 +281,7 @@
   <g class="flame">
     <path fill="#F6A623" d="M51 7.5c4.6 7.6 8.6 13.8 7.4 20.3-.8 4.4-4.2 7.4-7.6 7.4s-6.8-3-7.4-7.3C42.5 21.5 46.6 15 51 7.5Z"/>
     <path fill="#FFE3A3" d="M51.1 18.6c2.3 4 4 7.2 3.3 10.4-.4 2-1.9 3.4-3.4 3.4s-3-1.4-3.4-3.4c-.6-3.2 1.2-6.4 3.5-10.4Z"/>
-  </g></svg></span><span class="num deva" aria-hidden="true">६</span><h3>Light and fast</h3><p>Small apps that are careful with your battery and your data.</p></li><li class="promise"><span class="lamp-mini"><svg viewBox="0 0 64 64" aria-hidden="true" focusable="false"><g class="bowl">
+  </g></svg></span><span class="num deva">६</span><h3>Light and fast</h3><p>Small apps that are careful with your battery and your data.</p></li><li class="card" style="--d:2.27s"><span class="lamp-mini"><svg viewBox="0 0 64 64" aria-hidden="true" focusable="false"><g class="bowl">
     <path fill="#C9952F" d="M4.5 38.6c9.4 3.3 30.6 3.6 56.8-4.1-2.6 11.3-13.1 18-27.6 18.3C18.2 53 8.7 47.6 4.5 38.6Z"/>
     <path fill="#8A6418" d="M10.2 40.2c13.5 2.6 27.5 2.2 44.6-2.6-6.6 4-17.6 6.3-28.3 6.1-6.7-.1-12.4-1.3-16.3-3.5Z"/>
     <path fill="#E2B85A" d="M9 44.4c6.5 4.8 16.3 6.6 25.8 5.6-8.6 2.4-19.6.6-25.8-5.6Z" opacity=".7"/>
@@ -293,7 +290,7 @@
   <g class="flame">
     <path fill="#F6A623" d="M51 7.5c4.6 7.6 8.6 13.8 7.4 20.3-.8 4.4-4.2 7.4-7.6 7.4s-6.8-3-7.4-7.3C42.5 21.5 46.6 15 51 7.5Z"/>
     <path fill="#FFE3A3" d="M51.1 18.6c2.3 4 4 7.2 3.3 10.4-.4 2-1.9 3.4-3.4 3.4s-3-1.4-3.4-3.4c-.6-3.2 1.2-6.4 3.5-10.4Z"/>
-  </g></svg></span><span class="num deva" aria-hidden="true">७</span><h3>Every culture welcome</h3><p>Made for people of every language, culture and faith.</p></li><li class="promise"><span class="lamp-mini"><svg viewBox="0 0 64 64" aria-hidden="true" focusable="false"><g class="bowl">
+  </g></svg></span><span class="num deva">७</span><h3>Every culture welcome</h3><p>Made for people of every language, culture and faith.</p></li><li class="card" style="--d:2.68s"><span class="lamp-mini"><svg viewBox="0 0 64 64" aria-hidden="true" focusable="false"><g class="bowl">
     <path fill="#C9952F" d="M4.5 38.6c9.4 3.3 30.6 3.6 56.8-4.1-2.6 11.3-13.1 18-27.6 18.3C18.2 53 8.7 47.6 4.5 38.6Z"/>
     <path fill="#8A6418" d="M10.2 40.2c13.5 2.6 27.5 2.2 44.6-2.6-6.6 4-17.6 6.3-28.3 6.1-6.7-.1-12.4-1.3-16.3-3.5Z"/>
     <path fill="#E2B85A" d="M9 44.4c6.5 4.8 16.3 6.6 25.8 5.6-8.6 2.4-19.6.6-25.8-5.6Z" opacity=".7"/>
@@ -302,7 +299,31 @@
   <g class="flame">
     <path fill="#F6A623" d="M51 7.5c4.6 7.6 8.6 13.8 7.4 20.3-.8 4.4-4.2 7.4-7.6 7.4s-6.8-3-7.4-7.3C42.5 21.5 46.6 15 51 7.5Z"/>
     <path fill="#FFE3A3" d="M51.1 18.6c2.3 4 4 7.2 3.3 10.4-.4 2-1.9 3.4-3.4 3.4s-3-1.4-3.4-3.4c-.6-3.2 1.2-6.4 3.5-10.4Z"/>
-  </g></svg></span><span class="num deva" aria-hidden="true">८</span><h3>People over metrics</h3><p>We count lives made easier, not minutes spent in our apps.</p></li></ol>
+  </g></svg></span><span class="num deva">८</span><h3>People over metrics</h3><p>We count lives made easier, not minutes spent in our apps.</p></li></ul></div>
+    <div class="gallery-nav">
+      <button type="button" class="prev" aria-label="Previous promise"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 5-7 7 7 7"/></svg></button>
+      <button type="button" class="next" aria-label="Next promise"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg></button>
+    </div>
+  </section>
+
+  <section class="closing" id="name" aria-labelledby="name-title">
+    <div class="reveal">
+      <h2 class="visually-hidden" id="name-title">Our name</h2>
+      <p class="sanskrit" lang="sa">तमसो मा ज्योतिर्गमय</p>
+      <p class="translation">“Lead me from darkness to light.”</p>
+      <p class="source">Brihadaranyaka Upanishad 1.3.28</p>
+      <p class="copy">A diya does one quiet job. It gives light and asks for nothing back. We named the studio after eight of them, one for each promise we keep.</p>
+      <p class="sign"><svg viewBox="0 0 64 64" aria-hidden="true" focusable="false"><g class="bowl">
+    <path fill="#C9952F" d="M4.5 38.6c9.4 3.3 30.6 3.6 56.8-4.1-2.6 11.3-13.1 18-27.6 18.3C18.2 53 8.7 47.6 4.5 38.6Z"/>
+    <path fill="#8A6418" d="M10.2 40.2c13.5 2.6 27.5 2.2 44.6-2.6-6.6 4-17.6 6.3-28.3 6.1-6.7-.1-12.4-1.3-16.3-3.5Z"/>
+    <path fill="#E2B85A" d="M9 44.4c6.5 4.8 16.3 6.6 25.8 5.6-8.6 2.4-19.6.6-25.8-5.6Z" opacity=".7"/>
+    <path fill="#8A6418" d="M25.5 52.4c4.3 1.1 9 1.1 13.2-.2l-1 4.3c-3.6 1.1-7.6 1.1-11.2 0Z"/>
+  </g>
+  <g class="flame">
+    <path fill="#F6A623" d="M51 7.5c4.6 7.6 8.6 13.8 7.4 20.3-.8 4.4-4.2 7.4-7.6 7.4s-6.8-3-7.4-7.3C42.5 21.5 46.6 15 51 7.5Z"/>
+    <path fill="#FFE3A3" d="M51.1 18.6c2.3 4 4 7.2 3.3 10.4-.4 2-1.9 3.4-3.4 3.4s-3-1.4-3.4-3.4c-.6-3.2 1.2-6.4 3.5-10.4Z"/>
+  </g></svg>Ashtadeep <span class="deva" lang="hi">अष्टदीप</span></p>
+    </div>
   </section>
 </main>
 <footer class="site-footer">
