@@ -1,28 +1,29 @@
 /* Ashtadeep: a corporate home in light. Inset art hero, a finder, overlapping cards, stories, app cards with art,
    promises, the name, and a full footer. Tokens and rules live in DESIGN.md; change a value there first. */
 
-@font-face { font-family: "Satoshi"; src: url("fonts/satoshi-400.woff2") format("woff2"); font-weight: 400; font-display: swap; }
-@font-face { font-family: "Satoshi"; src: url("fonts/satoshi-500.woff2") format("woff2"); font-weight: 500; font-display: swap; }
-@font-face { font-family: "Satoshi"; src: url("fonts/satoshi-700.woff2") format("woff2"); font-weight: 700; font-display: swap; }
-@font-face { font-family: "Tiro Devanagari Hindi"; src: url("fonts/tiro-devanagari-hindi-devanagari.woff2") format("woff2"); font-weight: 400; font-display: swap; unicode-range: U+0900-097F, U+1CD0-1CF9, U+200C-200D, U+20A8, U+20B9, U+25CC, U+A830-A839, U+A8E0-A8FF; }
+@font-face { font-family: "Nunito"; src: url("fonts/nunito-latin.woff2") format("woff2"); font-weight: 200 1000; font-display: swap; }
+@font-face { font-family: "Baloo 2"; src: url("fonts/baloo2-devanagari.woff2") format("woff2"); font-weight: 400 800; font-display: swap; unicode-range: U+0900-097F, U+1CD0-1CF9, U+200C-200D, U+20A8, U+20B9, U+25CC, U+A830-A839, U+A8E0-A8FF; }
 
 :root {
   --white: #FFFFFF;
   --mist: #F1F2F7;          /* stories band, footer */
   --mist-deep: #E3E5EE;
-  --cream: #FBF6EE;         /* the name, the promises */
-  --ink: #141B33;           /* deep navy text */
-  --ink-2: #4A5170;         /* secondary text, 7.5:1 on white */
-  --ink-3: #5E6480;         /* small print, 5.5:1 on mist */
+  --cream: #FFF9EF;         /* Warm Ivory: the name, the promises */
+  --ink: #10182A;           /* Midnight: text */
+  --ink-2: #3F4A63;         /* secondary text, 8.9:1 on white */
+  --ink-3: #4F5873;         /* small print, 6.6:1 on mist */
   --line: #D5D8E4;
-  --chip: #141B33;          /* tags */
-  --saffron: #E07B00;
-  --ember: #C2410C;
+  --chip: #10182A;          /* tags */
+  --saffron: #E8770F;       /* Amber, deepened to stay readable as text (3.0:1 large) */
+  --ember: #F05A28;         /* Living Orange */
+  --amber: #FFB000;         /* Amber: art and marks only, never text */
+  --turquoise: #20BFC4;     /* Turquoise: art and marks */
+  --turquoise-ink: #0B7F84; /* turquoise for links and focus, 4.8:1 */
   --brass: #C9952F;
   --brass-ink: #8A5A0B;
 
-  --font: "Satoshi", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  --font-deva: "Tiro Devanagari Hindi", "Nirmala UI", "Noto Serif Devanagari", serif;
+  --font: "Nunito", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-deva: "Baloo 2", "Nirmala UI", "Noto Sans Devanagari", sans-serif;
   --gutter: 20px;
   --max: 1200px;
   --frame: 10px;            /* the hero's inset */
@@ -40,15 +41,15 @@ html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; scroll-behavior: 
 body { margin: 0; background: var(--white); color: var(--ink); font: 400 1.0625rem/1.55 var(--font); -webkit-font-smoothing: antialiased; }
 img, svg { display: block; max-width: 100%; }
 a { color: inherit; }
-:focus-visible { outline: 2px solid var(--saffron); outline-offset: 3px; border-radius: 8px; }
+:focus-visible { outline: 2px solid var(--turquoise-ink); outline-offset: 3px; border-radius: 8px; }
 ::selection { background: #FFE2B8; }
 .visually-hidden { position: absolute !important; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 .skip { position: absolute; left: 12px; top: -60px; z-index: 100; padding: 10px 16px; background: var(--ink); color: #fff; border-radius: 980px; text-decoration: none; }
 .skip:focus { top: 8px; }
-.deva { font-family: var(--font-deva); font-weight: 400; }
+.deva { font-family: var(--font-deva); font-weight: 600; }
 .wrap { width: min(100% - 2 * var(--gutter), var(--max)); margin-inline: auto; }
 .underline { color: var(--ink); text-decoration: underline; text-decoration-thickness: 1.5px; text-underline-offset: 6px; text-decoration-color: rgb(20 27 51 / .35); font-weight: 500; transition: text-decoration-color 160ms ease; }
-.underline:hover { text-decoration-color: var(--saffron); }
+.underline:hover { text-decoration-color: var(--turquoise-ink); }
 .underline.arrow::after { content: " \2197"; font-size: .85em; }
 .tag { display: inline-block; align-self: flex-start; padding: 3px 9px; border-radius: 6px; background: var(--chip); color: #fff; font: 600 .75rem/1.4 var(--font); letter-spacing: .02em; }
 
@@ -80,7 +81,7 @@ a { color: inherit; }
 .menu-sheet h2 { margin: 0 0 10px; font: 600 .8125rem/1.3 var(--font); letter-spacing: .06em; text-transform: uppercase; color: var(--ink-2); }
 .menu-sheet ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 4px; }
 .menu-sheet li a { display: inline-flex; align-items: center; min-height: 44px; font: 500 clamp(1.25rem, 1.1rem + .6vw, 1.625rem)/1.2 var(--font); letter-spacing: -.02em; text-decoration: none; }
-.menu-sheet li a:hover { color: var(--ember); }
+.menu-sheet li a:hover { color: var(--turquoise-ink); }
 
 /* Hero: art in an inset frame, a headline, the finder, and four cards over its foot */
 .hero { position: relative; margin: var(--frame); border-radius: var(--radius); overflow: hidden; min-height: min(100svh - 2 * var(--frame), 980px); background: #F7EDE2; display: flex; flex-direction: column; }
@@ -88,17 +89,17 @@ a { color: inherit; }
 @keyframes drift { from { transform: scale(1.04) translate(0, 0); } to { transform: scale(1.12) translate(-1.5%, -1%); } }
 .hero::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgb(255 250 244 / .25) 0%, rgb(255 250 244 / .55) 40%, rgb(255 250 244 / .2) 100%); pointer-events: none; }
 .hero-inner { position: relative; z-index: 1; flex: 1; display: flex; flex-direction: column; align-items: center; text-align: center; padding: clamp(120px, 14vh, 170px) var(--gutter) 0; }
-.hero h1 { margin: 0; font: 400 clamp(2.75rem, 1.2rem + 6vw, 6rem)/1.02 var(--font); letter-spacing: -.045em; text-wrap: balance; max-width: 16ch; }
+.hero h1 { margin: 0; font: 600 clamp(2.75rem, 1.2rem + 6vw, 6rem)/1.04 var(--font); letter-spacing: -.035em; text-wrap: balance; max-width: 16ch; }
 .hero h1 .glow { background: linear-gradient(100deg, var(--saffron), var(--ember)); -webkit-background-clip: text; background-clip: text; color: transparent; }
 .hero .lead { margin: 18px 0 0; max-width: 40ch; font: 500 clamp(1.0625rem, 1rem + .4vw, 1.25rem)/1.45 var(--font); color: var(--ink-2); }
 
 .finder { position: relative; z-index: 2; width: min(100%, 720px); margin-top: clamp(26px, 4vh, 40px); text-align: left; background: rgb(255 255 255 / .92); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-radius: 18px; box-shadow: var(--shadow); padding: 14px; }
 .finder label { display: block; }
 .finder input { width: 100%; min-height: 56px; border: 1px solid var(--line); border-radius: 12px; padding: 0 16px 0 46px; font: 400 1.0625rem var(--font); color: var(--ink); background: #fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%234A5170' stroke-width='2' stroke-linecap='round'%3E%3Ccircle cx='11' cy='11' r='7'/%3E%3Cpath d='m20 20-3.5-3.5'/%3E%3C/svg%3E") no-repeat 16px 50% / 20px; }
-.finder input:focus { outline: 2px solid var(--saffron); outline-offset: 1px; border-color: transparent; }
+.finder input:focus { outline: 2px solid var(--turquoise-ink); outline-offset: 1px; border-color: transparent; }
 .finder .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
 .finder .chips a { display: inline-flex; align-items: center; min-height: 36px; padding: 0 12px; border: 1px solid var(--line); border-radius: 8px; font: 500 .875rem/1 var(--font); text-decoration: none; background: #fff; transition: border-color 160ms ease, background-color 160ms ease; }
-.finder .chips a:hover { border-color: var(--saffron); background: #FFF8EE; }
+.finder .chips a:hover { border-color: var(--turquoise-ink); background: #F0FBFB; }
 .finder .results { list-style: none; margin: 10px 0 0; padding: 0; display: grid; gap: 2px; }
 .finder .results:empty { display: none; }
 .finder .results a { display: block; padding: 10px 12px; border-radius: 10px; text-decoration: none; }
@@ -119,7 +120,7 @@ a { color: inherit; }
 
 /* Section heads */
 .head { text-align: center; max-width: 46rem; margin: 0 auto; }
-.head h2 { margin: 0; font: 400 clamp(2rem, 1.2rem + 3vw, 3.25rem)/1.1 var(--font); letter-spacing: -.035em; text-wrap: balance; }
+.head h2 { margin: 0; font: 600 clamp(2rem, 1.2rem + 3vw, 3.25rem)/1.12 var(--font); letter-spacing: -.025em; text-wrap: balance; }
 .head h2 em { font-style: normal; background: linear-gradient(100deg, var(--saffron), var(--ember)); -webkit-background-clip: text; background-clip: text; color: transparent; }
 .head p { margin: 14px auto 0; max-width: 54ch; color: var(--ink-2); }
 .section { padding: clamp(72px, 8vw, 120px) 0; }
@@ -198,11 +199,11 @@ a { color: inherit; }
 
 /* The name: the chapter the owner chose */
 .name { text-align: center; background: linear-gradient(180deg, var(--cream), #FFFFFF); }
-.name .word { margin: 0; font: 400 clamp(5rem, 2.5rem + 10vw, 11rem)/1.05 var(--font-deva); color: var(--ink); }
+.name .lockup { width: min(100%, 640px); height: auto; margin: 0 auto; }
 .name .split { margin: 6px 0 0; color: var(--ink-2); font-size: 1.125rem; }
 .name .copy { margin: 26px auto 0; max-width: 36ch; font: 500 clamp(1.1875rem, 1rem + .6vw, 1.5rem)/1.4 var(--font); letter-spacing: -.015em; }
 .name blockquote { margin: 34px 0 0; }
-.name blockquote p { margin: 0; font: 400 clamp(1.75rem, 1.2rem + 2vw, 2.75rem)/1.3 var(--font-deva); color: var(--brass-ink); }
+.name blockquote p { margin: 0; font: 600 clamp(1.75rem, 1.2rem + 2vw, 2.75rem)/1.3 var(--font-deva); color: var(--brass-ink); }
 .name blockquote footer { margin-top: 6px; font-size: .9375rem; color: var(--ink-2); }
 
 /* Footer: columns of links on mist */
@@ -241,3 +242,23 @@ a { color: inherit; }
 /* The finder's box needs the script; without it, its suggestions still work as links */
 html:not(.js) .finder input { display: none; }
 html:not(.js) .finder .chips { margin-top: 0; }
+
+/* Brand marks (the owner's lockups and emblem, brand/source) */
+.brand img { height: 36px; width: auto; }
+.site-header .brand img { height: 52px; }
+@media (max-width: 520px) { .site-header .brand img { height: 40px; } }
+.foot-bottom .brand img { height: 40px; }
+.menu-sheet .brand img { height: 48px; }
+.hero .hi-tagline { margin: 10px 0 0; font: 600 clamp(1.125rem, 1rem + .5vw, 1.375rem)/1.4 var(--font-deva); color: var(--ink-2); }
+.name .tagline-hi { margin: 8px 0 0; font: 600 1.25rem/1.4 var(--font-deva); color: var(--ink-2); }
+.hero-card .icon:has(.emblem), .hero-card .icon.dark { background: #10182A; }
+.hero-card .icon img.emblem { width: 30px; height: 30px; }
+/* A promise's lamp: the one-colour emblem, lit to full colour when its card comes into view */
+.promise .lamp-mini { position: relative; width: 96px; height: 70px; margin-bottom: 52px; }
+.promise .lamp-mini img { position: absolute; left: 0; bottom: 0; width: 96px; height: auto; transition: opacity 700ms ease, filter 700ms ease; }
+.promise .lamp-mini .lit { opacity: 0; filter: drop-shadow(0 6px 14px rgb(240 90 40 / .35)); }
+.promise.on .lamp-mini .lit { opacity: 1; }
+.promise.on .lamp-mini .unlit { opacity: 0; }
+.lost .emblem { width: 120px; margin: 0 auto 14px; }
+.app .status img { width: 24px; height: auto; margin-top: -2px; }
+button, input { font: inherit; }
