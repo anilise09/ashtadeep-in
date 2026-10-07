@@ -41,7 +41,7 @@
       if (!hits.length) {
         var none = document.createElement('p');
         none.className = 'none';
-        none.textContent = 'Nothing here matches that yet. Try QuellWard, Vawra or privacy.';
+        none.textContent = 'Nothing here matches that yet. Try AshtaLok, Vawra or privacy.';
         list.after(none);
         return;
       }
