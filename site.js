@@ -94,8 +94,94 @@
     reveal.forEach(function (el) { el.classList.add('in'); });
     lamps.forEach(function (l) { l.classList.add('on'); });
   }
-  // Vyom's speech bubble: one true line at a time, changing every few seconds (held still for reduced motion).
+  // Vyom, the guardian. His clips are whole frames of the same size, so one swaps for another without a jump: he
+  // lands (the take-off played backwards) into the pose his cape loop starts from, and takes off from it. Each play
+  // gets its own object URL so the animation starts from its first frame; the files load once. Reduced motion keeps
+  // the still frame and plain jumps.
+  var CLIP = { land: 2632, takeoff: 3149 };
+  var clips = {};
+  function clip(name) {
+    return clips[name] || (clips[name] = fetch('/img/vyom-' + name + '.webp').then(function (r) { return r.blob(); }));
+  }
+  function show(img, name, cls) {
+    return clip(name).then(function (b) {
+      var old = img.getAttribute('data-url'), url = URL.createObjectURL(b);
+      img.classList.remove('dropin', 'launch', 'away');
+      void img.offsetWidth;
+      img.src = url; img.setAttribute('data-url', url);
+      if (cls) img.classList.add(cls);
+      if (old) setTimeout(function () { URL.revokeObjectURL(old); }, 500);
+    });
+  }
+  // Land, then stand guard with the cape loop; resolves once he is standing.
+  function land(img) {
+    img.vyomBusy = true;
+    return Promise.all([clip('land'), clip('idle')]).then(function () { return show(img, 'land', 'dropin'); })
+      .then(function () { return new Promise(function (ok) { setTimeout(ok, CLIP.land); }); })
+      .then(function () { img.vyomBusy = false; return show(img, 'idle'); });
+  }
+  function takeoff(img) {
+    img.vyomBusy = true;
+    return show(img, 'takeoff', 'launch').then(function () {
+      return new Promise(function (ok) { setTimeout(function () { img.classList.add('away'); img.vyomBusy = false; ok(); }, CLIP.takeoff); });
+    });
+  }
+  var canFly = motion && 'fetch' in window && 'Promise' in window && window.URL && URL.createObjectURL;
   var mascot = document.querySelector('.mascot');
+  var hero = mascot && mascot.querySelector('.vyom');
+  var heroShown = function () { return mascot && getComputedStyle(mascot).display !== 'none'; };
+  // Hero: he drops in from the sky, then says his first line.
+  function heroLand() {
+    if (!hero || !heroShown()) return Promise.resolve();
+    mascot.classList.add('waiting'); hero.classList.add('away');
+    return land(hero).then(function () { mascot.classList.remove('waiting'); });
+  }
+  if (canFly && hero) heroLand();
+  // Header: once the page moves, a small Vyom lands in the bar.
+  var mini = document.querySelector('.mini-vyom .vyom');
+  if (canFly && mini && header) {
+    var wasScrolled = header.classList.contains('is-scrolled');
+    if (wasScrolled) land(mini);
+    new MutationObserver(function () {
+      var now = header.classList.contains('is-scrolled');
+      if (now && !wasScrolled && !mini.vyomBusy) land(mini);
+      wasScrolled = now;
+    }).observe(header, { attributes: true, attributeFilter: ['class'] });
+  }
+  // Footer: he lands on guard when you reach him.
+  var guard = document.querySelector('.guard .vyom');
+  if (canFly && guard && 'IntersectionObserver' in window) {
+    guard.classList.add('away');
+    var seen = new IntersectionObserver(function (es) {
+      es.forEach(function (e) { if (e.isIntersecting && guard.classList.contains('away') && !guard.vyomBusy) land(guard); });
+    }, { threshold: 0.6 });
+    seen.observe(guard.parentNode);
+  }
+  // "Fly to the top" and the small Vyom: he takes off, the page follows him up, and he lands back in the hero.
+  function flyUp(img) {
+    return function (ev) {
+      if (!canFly) return;
+      ev.preventDefault();
+      if (img.vyomBusy) return;
+      takeoff(img);
+      setTimeout(function () {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        var arrive = function () {
+          if (window.scrollY > 60) return;
+          window.removeEventListener('scroll', arrive);
+          heroLand();
+        };
+        window.addEventListener('scroll', arrive, { passive: true });
+        arrive();
+      }, 1700);
+    };
+  }
+  var fly = document.querySelector('.guard .fly');
+  if (fly && guard) fly.addEventListener('click', flyUp(guard));
+  var miniLink = document.querySelector('.mini-vyom');
+  if (miniLink && mini) miniLink.addEventListener('click', flyUp(mini));
+
+  // Vyom's speech bubble: one true line at a time, changing every few seconds (held still for reduced motion).
   if (mascot && motion) {
     var lines = JSON.parse(mascot.getAttribute('data-lines') || '[]');
     var bubble = mascot.querySelector('.bubble');
