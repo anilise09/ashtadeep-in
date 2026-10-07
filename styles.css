@@ -280,3 +280,7 @@ button, input { font: inherit; }
 .meet-text .kicker { margin: 0; font: 600 .8125rem/1 var(--font); letter-spacing: .08em; text-transform: uppercase; color: var(--ember); }
 .meet-text .hi { margin: 8px 0 0; font-family: "Tiro Devanagari Hindi", var(--font); color: var(--ink-2); }
 .meet-text p { max-width: 46ch; color: var(--ink-2); }
+
+/* Product cards: each product's own wordmark in place of the plain name. */
+.app .card h3 .wordmark { display: block; width: auto; max-width: 100%; height: .92em; }
+.app .card h3 .wordmark.caps { height: .6em; margin: .18em 0 .14em; }
