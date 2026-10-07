@@ -316,3 +316,11 @@ button, input { font: inherit; }
 .guard .fly { display: inline-flex; align-items: center; min-height: 44px; padding: 0 20px; border-radius: 980px; background: var(--ink); color: #fff; text-decoration: none; font: 500 .9375rem/1 var(--font); box-shadow: 0 6px 18px -8px rgb(20 27 51 / .6); transition: transform 160ms var(--ease-out); }
 .guard .fly:active { transform: scale(.97); }
 @media (prefers-reduced-motion: reduce) { .vyom.dropin, .vyom.launch { animation: none; } }
+
+/* The region button: its globe turns on hover, and spins while Vyom flies you to the other site. */
+.region svg { transition: transform 700ms var(--ease-out); }
+.region:hover svg { transform: rotate(360deg); }
+.region.flying svg { animation: globe-spin 600ms linear infinite; }
+.region.flying { transform: scale(.97); }
+@keyframes globe-spin { to { transform: rotate(360deg); } }
+@media (prefers-reduced-motion: reduce) { .region svg, .region:hover svg { transition: none; transform: none; } .region.flying svg { animation: none; } }

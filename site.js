@@ -173,6 +173,26 @@
   if (fly && guard) fly.addEventListener('click', flyUp(guard));
   var miniLink = document.querySelector('.mini-vyom');
   if (miniLink && mini) miniLink.addEventListener('click', flyUp(mini));
+  // The region button: Vyom takes off from beside it, the globe spins, and the other site opens, where he lands.
+  // Ctrl/Cmd-click and middle-click still open it the usual way.
+  document.querySelectorAll('.site-header .region').forEach(function (a) {
+    a.addEventListener('click', function (ev) {
+      if (!canFly || !mini || ev.metaKey || ev.ctrlKey || ev.shiftKey || ev.button !== 0) return;
+      ev.preventDefault();
+      if (a.classList.contains('flying')) return;
+      a.classList.add('flying');
+      var go = function () { window.location.href = a.href; };
+      if (mini.vyomBusy || mini.classList.contains('away')) { setTimeout(go, 700); return; }
+      takeoff(mini);
+      setTimeout(go, 2700);
+    });
+  });
+  // Coming back with the browser's Back button: settle the button and bring Vyom down again.
+  window.addEventListener('pageshow', function (ev) {
+    if (!ev.persisted) return;
+    document.querySelectorAll('.region.flying').forEach(function (a) { a.classList.remove('flying'); });
+    if (canFly && mini && mini.classList.contains('away')) land(mini);
+  });
 
   // Vyom's speech bubble: one true line at a time, changing every few seconds (held still for reduced motion).
   if (mascot && motion) {
