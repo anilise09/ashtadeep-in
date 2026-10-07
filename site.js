@@ -137,17 +137,9 @@
     return land(hero).then(function () { mascot.classList.remove('waiting'); });
   }
   if (canFly && hero) heroLand();
-  // Header: once the page moves, a small Vyom lands in the bar.
+  // Header: a small Vyom lands in the bar as the page opens, just after the big one.
   var mini = document.querySelector('.mini-vyom .vyom');
-  if (canFly && mini && header) {
-    var wasScrolled = header.classList.contains('is-scrolled');
-    if (wasScrolled) land(mini);
-    new MutationObserver(function () {
-      var now = header.classList.contains('is-scrolled');
-      if (now && !wasScrolled && !mini.vyomBusy) land(mini);
-      wasScrolled = now;
-    }).observe(header, { attributes: true, attributeFilter: ['class'] });
-  }
+  if (canFly && mini) { mini.classList.add('away'); setTimeout(function () { land(mini); }, 900); }
   // Footer: he lands on guard when you reach him.
   var guard = document.querySelector('.guard .vyom');
   if (canFly && guard && 'IntersectionObserver' in window) {
@@ -170,6 +162,7 @@
           if (window.scrollY > 60) return;
           window.removeEventListener('scroll', arrive);
           heroLand();
+          if (mini && mini.classList.contains('away') && !mini.vyomBusy) setTimeout(function () { land(mini); }, 900);
         };
         window.addEventListener('scroll', arrive, { passive: true });
         arrive();

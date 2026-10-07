@@ -69,7 +69,7 @@ a { color: inherit; }
 .region { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 0 18px; border-radius: 980px; background: var(--ink); color: #fff; text-decoration: none; font: 500 .9375rem/1 var(--font); box-shadow: 0 6px 18px -8px rgb(20 27 51 / .6); transition: transform 160ms var(--ease-out); }
 .region:active { transform: scale(.97); }
 .region svg { width: 16px; height: 16px; }
-@media (max-width: 899px) { .pills { display: none; } .bar .region { margin-left: auto; } }
+@media (max-width: 899px) { .pills { display: none; } }
 @media (max-width: 520px) { .region span { display: none; } .region { padding: 0 14px; } .brand { font-size: 1.1875rem; } }
 
 /* The menu sheet, from the round button */
@@ -297,10 +297,10 @@ button, input { font: inherit; }
 @keyframes vyom-drop { from { transform: translateY(-70vh); } to { transform: none; } }
 @keyframes vyom-launch { from { transform: none; } to { transform: translateY(-130vh); } }
 
-/* Header: a small Vyom lands in the bar once the page moves; tapping him flies you back to the top. */
-.mini-vyom { display: none; position: relative; flex: none; width: 28px; aspect-ratio: 186 / 340; margin-left: auto; }
-.site-header.is-scrolled .mini-vyom { display: block; }
-.site-header.is-scrolled .bar .region { margin-left: 0; }
+/* Header: a small Vyom stands in the bar beside the region button, landing there as the page opens; tapping him
+   flies you back to the top. */
+.mini-vyom { display: block; position: relative; flex: none; width: 30px; aspect-ratio: 186 / 340; margin-left: auto; }
+.bar .region { margin-left: 0; }
 .mini-vyom img { filter: drop-shadow(0 4px 6px rgb(20 27 51 / .25)); }
 .mini-vyom .vyom.dropin { animation-name: vyom-drop-mini; }
 @keyframes vyom-drop-mini { from { transform: translateY(-160px); } to { transform: none; } }
