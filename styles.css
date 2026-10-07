@@ -262,3 +262,21 @@ html:not(.js) .finder .chips { margin-top: 0; }
 .lost .emblem { width: 120px; margin: 0 auto 14px; }
 .app .status img { width: 24px; height: auto; margin-top: -2px; }
 button, input { font: inherit; }
+
+/* Vyom, the mascot: beside the hero's search on wide screens, with a speech bubble; and his own section. */
+.mascot { display: none; }
+@media (min-width: 1100px) {
+  .mascot { display: block; position: absolute; z-index: 2; right: max(var(--gutter), calc(50% - 640px)); top: 322px; width: 168px; pointer-events: none; }
+  .mascot .vyom { width: 100%; height: auto; filter: drop-shadow(0 18px 24px rgb(20 27 51 / .22)); }
+  .mascot .bubble { position: absolute; right: 0; bottom: calc(100% + 10px); width: 210px; margin: 0; padding: 12px 14px; background: #fff; border-radius: 16px; box-shadow: var(--shadow); font: 500 .9375rem/1.35 var(--font); color: var(--ink); text-align: left; transition: opacity 260ms var(--ease-out); }
+  .mascot .bubble::after { content: ""; position: absolute; right: 62px; top: 100%; border: 8px solid transparent; border-top-color: #fff; border-bottom: 0; }
+  .mascot .bubble.fade { opacity: 0; }
+}
+.meet { background: linear-gradient(180deg, #FFFFFF, var(--cream)); }
+.meet-inner { width: min(100% - 2 * var(--gutter), var(--max)); margin: 0 auto; display: grid; gap: 28px; align-items: center; }
+@media (min-width: 820px) { .meet-inner { grid-template-columns: .85fr 1fr; gap: 56px; } }
+.meet-art { width: 100%; max-width: 420px; height: auto; margin: 0 auto; border-radius: var(--card-radius); box-shadow: var(--shadow); }
+.meet-text h2 { margin: 6px 0 0; font: 600 clamp(2rem, 1.2rem + 3vw, 3.25rem)/1.12 var(--font); letter-spacing: -.025em; }
+.meet-text .kicker { margin: 0; font: 600 .8125rem/1 var(--font); letter-spacing: .08em; text-transform: uppercase; color: var(--ember); }
+.meet-text .hi { margin: 8px 0 0; font-family: "Tiro Devanagari Hindi", var(--font); color: var(--ink-2); }
+.meet-text p { max-width: 46ch; color: var(--ink-2); }

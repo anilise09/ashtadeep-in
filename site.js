@@ -94,4 +94,15 @@
     reveal.forEach(function (el) { el.classList.add('in'); });
     lamps.forEach(function (l) { l.classList.add('on'); });
   }
+  // Vyom's speech bubble: one true line at a time, changing every few seconds (held still for reduced motion).
+  var mascot = document.querySelector('.mascot');
+  if (mascot && motion) {
+    var lines = JSON.parse(mascot.getAttribute('data-lines') || '[]');
+    var bubble = mascot.querySelector('.bubble');
+    var at = 0;
+    if (lines.length > 1) setInterval(function () {
+      bubble.classList.add('fade');
+      setTimeout(function () { at = (at + 1) % lines.length; bubble.textContent = lines[at]; bubble.classList.remove('fade'); }, 280);
+    }, 4800);
+  }
 })();
