@@ -183,8 +183,10 @@
       a.classList.add('flying');
       var go = function () { window.location.href = a.href; };
       if (mini.vyomBusy || mini.classList.contains('away')) { setTimeout(go, 700); return; }
-      takeoff(mini);
+      // The page is sent on a timer first, so nothing the animation does (a slow or failed picture, a thrown error)
+      // can keep the visitor here.
       setTimeout(go, 2700);
+      try { takeoff(mini).catch(function () { go(); }); } catch (err) { go(); }
     });
   });
   // Coming back with the browser's Back button: settle the button and bring Vyom down again.
