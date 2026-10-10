@@ -64,3 +64,11 @@ document.getElementById("next-tip").addEventListener("click", () => {
   tipIndex = (tipIndex + 1) % tips.length;
   document.getElementById("tip").textContent = tips[tipIndex];
 });
+
+// Keep the gallery and local player from playing over each other.
+const auraPlayers = Array.from(document.querySelectorAll("video"));
+auraPlayers.forEach(player => {
+  player.addEventListener("play", () => {
+    auraPlayers.forEach(other => { if (other !== player) other.pause(); });
+  });
+});
